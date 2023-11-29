@@ -151,6 +151,21 @@ https://mutuals-beta.vercel.app/myevents
             throw error
         }
     }
+    const testRespond = async () => {
+        try {
+            const response = await fetch(`/api/users/B5XzF3Ce3EOa49GKw5dIfTxzh6G2/invitations/test/respond`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify("accept")
+        })
+            console.log(response);
+        }
+        catch (error) {
+            throw error
+        }
+    }
     const sendText = (sendto: string, message: string) => {
         fetch('/api/sendText', {
             method: 'POST',
@@ -202,11 +217,11 @@ https://mutuals-beta.vercel.app/myevents
                     className="bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 px-4 rounded">
                     Send Invitations
                 </button>
+
                 <button onClick={() => sendText(phoneNumber, eventReminder)}
                     className="bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 px-4 rounded">Send Event Reminder
                     Text
                 </button>
-                
                 <button onClick={() => sendText(phoneNumber, calendarLive)}
                     className="bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 px-4 rounded">Send Calendar Live
                     Text
